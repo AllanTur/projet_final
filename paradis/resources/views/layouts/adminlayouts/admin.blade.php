@@ -45,7 +45,7 @@
                     <li class="nav-item dropdown">
                         <button class="btn btn-secondary dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->prenom }}
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear"></i> Paramètre</a></li>
@@ -57,7 +57,7 @@
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    
+
                                     <button type="button" :href="route('logout')" onclick="event.preventDefault();
                                                     this.closest('form').submit();" class="btn btn-danger m-2">
                                         <i class="fa-solid fa-right-from-bracket"></i>
