@@ -5,7 +5,8 @@
     <div class="activity">
         <div class="title">
             <span class="text">Liste des Bungalows</span>
-            <button style="margin-left: 10px" type="button" class="btn btn-outline-primary"><a href="{{ route('admin.bungalows.create') }}">Ajouter</a></button>
+            <button style="margin-left: 10px" type="button" class="btn btn-outline-primary"><a
+                    href="{{ route('admin.bungalows.create') }}">Ajouter</a></button>
         </div>
 
         <div class="activity-data">
