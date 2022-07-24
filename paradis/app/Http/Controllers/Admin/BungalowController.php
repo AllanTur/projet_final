@@ -26,7 +26,7 @@ class BungalowController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.bungalows.create');
     }
 
     /**
