@@ -42,6 +42,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Réservation</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href={{ route('accueil') }}>Page d'accueil</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <button class="btn btn-secondary dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
