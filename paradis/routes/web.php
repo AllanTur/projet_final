@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BungalowController;
+use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 ################################ Route pour ma page accueil  ########################
 Route::get('/', function () {
     return view('paradis.accueil');
-});
+})->name('/');
+
 
 Route::get('/accueil', function () {
     return view('paradis.accueil');
@@ -26,6 +30,9 @@ Route::get('/accueil', function () {
 #########################################  Route vers le panel admistrateur ###################
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::resource('/bungalows', BungalowController::class);
+    Route::resource('/reservations', ReservationController::class);
+    Route::resource('/users', UserController::class);
 });
 
 require __DIR__.'/auth.php';

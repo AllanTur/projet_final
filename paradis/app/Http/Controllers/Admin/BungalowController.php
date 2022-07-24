@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bungalow;
 use Illuminate\Http\Request;
 
 class BungalowController extends Controller
@@ -14,7 +15,8 @@ class BungalowController extends Controller
      */
     public function index()
     {
-        //
+        $bungalows = Bungalow::all();
+        return view('admin.bungalows.index', compact('bungalows'));
     }
 
     /**
