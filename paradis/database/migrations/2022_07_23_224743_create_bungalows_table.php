@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('bungalows', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->text('description');
+            $table->string('image');
+            $table->integer('prix');
             $table->timestamps();
         });
     }
