@@ -16,7 +16,7 @@
 
                 @foreach ($bungalows as $bungalow)
 
-                <span class="data-list">{{ $bungalow->nom }}</span>
+                <span style="padding-top: 20px" class="data-list">{{ $bungalow->nom }}</span>
 
                 @endforeach
             </div>
@@ -24,7 +24,7 @@
                 <span class="data-title">Description</span>
                 @foreach ($bungalows as $bungalow)
 
-                <span class="data-list">{{ $bungalow->description }}</span>
+                <span style="padding-top: 20px" class="data-list">{{ $bungalow->description }}</span>
                 
                 @endforeach
             </div>
@@ -33,15 +33,15 @@
                 @foreach ($bungalows as $bungalow)
 
                 <span class="data-list"><img style="width: 50px;height: 50px;" src="{{ Storage::url($bungalow->image) }}" alt="Image du bungalow"></span>
-                
+
                 @endforeach
             </div>
             <div class="data type">
                 <span class="data-title">Prix</span>
                 @foreach ($bungalows as $bungalow)
 
-                <span class="data-list">{{ $bungalow->prix }}</span>
-                
+                <span style="padding-top: 20px" class="data-list">{{ $bungalow->prix }}</span>
+
                 @endforeach
             </div>
             <div class="data status">
@@ -49,16 +49,13 @@
 
                 @foreach ($bungalows as $bungalow)
 
-                <span class="data-list">
+                <span style="padding-top: 10px" class="data-list">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <button type="button" class="btn btn-outline-primary">Modifier</button>
                         <button type="button" class="btn btn-outline-danger">Supprimer</button>
                     </div>
                 </span>
-                
-                @endforeach
-               
-                
+                @endforeach    
             </div>
         </div>
         {{-- @endforeach --}}
