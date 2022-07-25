@@ -110,48 +110,48 @@
         <button style="margin-left: 10px" type="button" class="btn btn-outline-primary"><a
                 href="{{ route('admin.bungalows.index') }}">Retour</a></button>
 
-        <form method="POST" action="/action">
+        <form method="POST" action="{{ route('admin.bungalows.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="row">
                 <div class="col-25">
-                    <label for="fname">Nom du bungalows</label>
+                    <label for="nom">Nom du bungalows</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="fname" name="firstname" placeholder="Nom du bungalows..." required>
+                    <input type="text" id="nom" name="nom" placeholder="Nom du bungalows..." required>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-25">
-                    <label for="subject">Description</label>
+                    <label for="description">Description</label>
                 </div>
                 <div class="col-75">
-                    <textarea id="subject" name="subject" placeholder="Veuillez saisir une description..."
+                    <textarea id="description" name="description" placeholder="Veuillez saisir une description..."
                         style="height:200px" required></textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-25">
-                    <label for="lname">Photo</label>
+                    <label for="image">Photo</label>
                 </div>
                 <div class="col-75">
-                    <input type="file" id="myFile" name="filename" required>
+                    <input type="file" id="image" name="image" required>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-25">
-                    <label for="fname">Prix de la nuit</label>
+                    <label for="prix">Prix de la nuit</label>
                 </div>
                 <div style="padding-bottom: 10px" class="col-75">
-                    <input type="number" id="fname" name="firstname" placeholder="Indiquer le prix..." required>
+                    <input type="number" id="prix" name="prix" placeholder="Indiquer le prix..."  min="0" required>
                 </div>
             </div>
 
-            <div class="row">        
-                <input type="submit" value="Submit">
+            <div>        
+                <button type="submit" class="btn btn-outline-success">Créer</button>
             </div>
 
         </form>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BungalowStoreRequest;
 use App\Models\Bungalow;
 use Illuminate\Http\Request;
 
@@ -35,9 +36,18 @@ class BungalowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BungalowStoreRequest $request)
     {
-        //
+        $image = $request->file('image')->store('public/bungalows');
+
+        Bungalow::create([
+            'nom' => $request->nom,
+            'description' => $request->description,
+            'image' => $image,
+            'prix' => $request->prix,
+        ]);
+
+        return to_route('admin.bungalows.index');
     }
 
     /**
