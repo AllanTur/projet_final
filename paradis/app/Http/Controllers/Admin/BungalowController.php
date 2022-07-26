@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BungalowStoreRequest;
 use App\Models\Bungalow;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BungalowController extends Controller
 {
@@ -40,7 +41,7 @@ class BungalowController extends Controller
     {
         $image = $request->file('image')->store('public/bungalows');
 
-        Bungalow::create([
+        Bungalow::create([       
             'nom' => $request->nom,
             'description' => $request->description,
             'image' => $image,
@@ -67,9 +68,9 @@ class BungalowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Bungalow $bungalow)
     {
-        //
+        return view('admin.bungalows.edit', compact('bungalow'));
     }
 
     /**
@@ -79,9 +80,32 @@ class BungalowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Bungalow $bungalow)
+    {   
+        $request->validate([
+            'nom' => 'required',
+            'description' => 'required',
+            'prix' => 'required',
+        ]);
+
+        $image = $bungalow->image;
+
+        /* Si on choisi de modifier l'image alors l'image remplacer sera effacer et
+             l'image qui lui remplace sera ajouter dans le dossier "public/bungalows" */
+
+        if ($request->hasFile('image')) {
+            Storage::delete($bungalow->image);
+            $image = $request->file('image')->store('public/bungalows');
+        }
+
+        $bungalow->update([
+            'nom' => $request->nom,
+            'description' => $request->description,
+            'image' => $image,
+            'prix' => $request->prix,
+        ]);
+
+        return to_route('admin.bungalows.index');
     }
 
     /**
@@ -90,8 +114,11 @@ class BungalowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Bungalow $bungalow)
     {
-        //
+        Storage::delete($bungalow->image);
+        $bungalow->delete();
+
+        return to_route('admin.bungalows.index');
     }
 }

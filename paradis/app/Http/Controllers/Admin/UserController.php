@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -15,9 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        //récupère tout le monde sauf l'admin
+        $users = User::where('is_admin', '!=', 1)->get();
         return view('admin.users.index', compact('users'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -71,7 +74,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -80,8 +83,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return to_route('admin.users.index');
     }
 }

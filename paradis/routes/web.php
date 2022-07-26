@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BungalowController;
 use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Admin\UserController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,10 @@ Route::get('/', function () {
     return view('paradis.accueil');
 })->name('/');
 
+
+Route::get('/catalogue', function () {
+    return view('paradis.catalogue');
+})->name('catalogue');
 
 Route::get('/accueil', function () {
     return view('paradis.accueil');

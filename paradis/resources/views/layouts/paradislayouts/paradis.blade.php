@@ -40,7 +40,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Nos bungalows</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('catalogue') }}">Nos bungalows</a>
                     </li>
                     <!-- Vérifie si il est loguer et si c'est un administrateur pour se lien -->
                     @if(auth()->check() && auth()->user()->is_admin == 1)

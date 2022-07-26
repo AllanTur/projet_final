@@ -34,7 +34,7 @@
             box-sizing: border-box;
         }
 
-        body{
+        body {
             background-color: #242526;
         }
 
@@ -110,17 +110,21 @@
 
     <div class="container">
 
-        <a  style="margin-left: 10px" class="btn btn-primary" href="{{ route('admin.bungalows.index') }}" role="button">Retour</a>
 
-        <form method="POST" action="{{ route('admin.bungalows.store') }}" enctype="multipart/form-data">
+        <a style="margin-left: 10px" class="btn btn-primary" href="{{ route('admin.bungalows.index') }}"
+            role="button">Retour</a>
+        <p style="color:#292069;" class="fs-1">Modification d'un bungalow</p>
+
+        <form method="POST" action="{{ route('admin.bungalows.update', $bungalow->id) }}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
 
             <div class="row">
                 <div class="col-25">
                     <label style="font-weight:bold" for="nom">NOM DU BUNGALOW :</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="nom" name="nom" placeholder="Nom du bungalows..." required>
+                    <input type="text" class="form-control" id="nom" name="nom" value="{{ $bungalow->nom }}" required>
                 </div>
             </div>
 
@@ -129,8 +133,18 @@
                     <label style="font-weight:bold" for="description">DESCRIPTION :</label>
                 </div>
                 <div class="col-75">
-                    <textarea id="description" name="description" placeholder="Veuillez saisir une description..."
-                        style="height:200px" required></textarea>
+                    <textarea class="form-control" id="description" name="description"
+                        required>{{ $bungalow->description }}</textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label style="font-weight:bold" for="imagenow" class="form-label">PHOTO ACTUELLE :</label>
+                </div>
+                <div class="col-75">
+                    <img style="width: 100px;height: 100px;" src="{{ Storage::url($bungalow->image) }}"
+                        alt="Image du bungalow">
                 </div>
             </div>
 
@@ -139,7 +153,8 @@
                     <label style="font-weight:bold" for="image">PHOTO :</label>
                 </div>
                 <div class="col-75">
-                    <input style="font-weight:bold; cursor:pointer" type="file" id="image" name="image" required>
+                    <input style="font-weight:bold; cursor:pointer" class="form-control" type="file" id="image"
+                        name="image">
                 </div>
             </div>
 
@@ -148,12 +163,13 @@
                     <label style="font-weight:bold" for="prix">PRIX :</label>
                 </div>
                 <div style="padding-bottom: 10px" class="col-75">
-                    <input type="number" id="prix" name="prix" placeholder="Indiquer le prix..."  min="0" required>
+                    <input type="number" class="form-control" id="prix" name="prix" value="{{ $bungalow->prix }}"
+                        min="0" required>
                 </div>
             </div>
 
-            <div>        
-                <button style="font-weight:bold" type="submit" class="btn btn-outline-success">CRÉER UN BUNGALOW</button>
+            <div>
+                <button style="font-weight:bold" type="submit" class="btn btn-outline-success">MODIFIFIER LE BUNGALOW</button>
             </div>
 
         </form>

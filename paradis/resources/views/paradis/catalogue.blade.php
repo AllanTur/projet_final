@@ -1,5 +1,5 @@
 @extends('layouts.paradislayouts.paradis')
 
 @section('content')
-    <p>Page Reservations d'un bungalow</p>
+    <p>Page Catalogue des bungalows</p>
 @endsection
