@@ -23,21 +23,25 @@ Route::get('/', function () {
     return view('paradis.accueil');
 })->name('/');
 
+Route::get('/catalogue', [BungalowController::class, 'catalogue'])->name('catalogue');
+// Route::get('/catalogue', function () {
+//     $bungalows = Bungalow::all();
+//     return view('paradis.catalogue', compact('bungalows'));
+// })->name('catalogue');
 
-Route::get('/catalogue', function () {
-    return view('paradis.catalogue');
-})->name('catalogue');
+Route::get('/bungalows', [BungalowController::class])->middleware(['auth'])->name('bungalows');
+Route::get('/bungalows/{id}', [BungalowController::class, 'show'])->middleware(['auth'])->name('bungalows');
 
 Route::get('/accueil', function () {
     return view('paradis.accueil');
 })->middleware(['auth'])->name('accueil');
 
 #########################################  Route vers le panel admistrateur ###################
-Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function() {
+Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/bungalows', BungalowController::class);
     Route::resource('/reservations', ReservationController::class);
     Route::resource('/users', UserController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

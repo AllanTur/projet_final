@@ -21,6 +21,18 @@ class BungalowController extends Controller
         return view('admin.bungalows.index', compact('bungalows'));
     }
 
+    public function catalogue()
+    {
+        $bungalows = Bungalow::all();
+        return view('paradis.catalogue', compact('bungalows'));
+    }
+
+    // public function reservation($id)
+    // {
+    //     $reserves = Bungalow::find($id);
+    //     return view('paradis.reservation', compact('reserves'));
+    // }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,7 +53,7 @@ class BungalowController extends Controller
     {
         $image = $request->file('image')->store('public/bungalows');
 
-        Bungalow::create([       
+        Bungalow::create([
             'nom' => $request->nom,
             'description' => $request->description,
             'image' => $image,
@@ -59,7 +71,8 @@ class BungalowController extends Controller
      */
     public function show($id)
     {
-        //
+       $reserves = Bungalow::find($id);
+       return view('paradis.show', compact('reserves'));
     }
 
     /**
@@ -81,7 +94,7 @@ class BungalowController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Bungalow $bungalow)
-    {   
+    {
         $request->validate([
             'nom' => 'required',
             'description' => 'required',

@@ -15,9 +15,15 @@ class ReservationController extends Controller
      */
     public function index()
     {
+        // $contrats=Contrats::with('Pigistes')->get();
+        // $bungalows = Reservation::with('bungalows')->get();
+        // $users = Reservation::with('users')->get();
+        // $reservations = Reservation::with('bungalows')->get();
         $reservations = Reservation::all();
         return view('admin.reservations.index', compact('reservations'));
     }
+
+   
 
     /**
      * Show the form for creating a new resource.
@@ -80,8 +86,10 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reservation $reservation)
     {
-        //
+        $reservation->delete();
+
+        return to_route('admin.reservations.index');
     }
 }
