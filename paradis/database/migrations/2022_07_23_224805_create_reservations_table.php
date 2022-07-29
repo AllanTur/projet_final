@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Bungalow;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,15 +17,19 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('user_id');
-            // $table->unsignedBigInteger('bungalow_id');
-            $table->string('nom');
-            $table->dateTime('res_debut');
-            $table->dateTime('res_fin');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('bungalow_id');
+            $table->date('debut');
+            $table->date('fin');
             $table->timestamps();
 
-            // $table->foreign('user_id')->references('id')->on('users');
-            // $table->foreign('bungalow_id')->references('id')->on('bungalows');
+            // $table->dropForeign('reservations_user_id_foreign');
+            // $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('bungalow_id')->references('id')->on('bungalows')->cascadeOnDelete();
+
+            // $table->dropForeign('reservations_bungalow_id_foreign');
+            // $table->foreign('bungalow_id')->references('id')->on('bungalows')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
