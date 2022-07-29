@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\BungalowStoreRequest;
+use App\Models\User;
 use App\Models\Bungalow;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\BungalowStoreRequest;
 
 class BungalowController extends Controller
 {
@@ -71,8 +73,7 @@ class BungalowController extends Controller
      */
     public function show($id)
     {
-       $reserves = Bungalow::find($id);
-       return view('paradis.show', compact('reserves'));
+        //
     }
 
     /**
@@ -131,6 +132,7 @@ class BungalowController extends Controller
     {
         Storage::delete($bungalow->image);
         $bungalow->delete();
+        $bungalow->reservations()->delete();
 
         return to_route('admin.bungalows.index');
     }

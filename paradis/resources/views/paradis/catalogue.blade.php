@@ -17,18 +17,17 @@
                             data-holder-rendered="true">
                         <div class="card-body">
                             <p>{{ $bungalow->nom }}</p>
-                            <p class="card-text">{{ $bungalow->description }}</p>
                             <div class="d-flex justify-content-between align-items-center">
 
                                 @if(auth()->check() && (auth()->user()->is_admin == 0 || auth()->user()->is_admin == 1))
                                 <div class="btn-group">
-                                    <a type="button" href="{{ route('bungalows', $bungalow->id) }}"
-                                        class="btn btn-sm btn-success">Réserver</a>
+                                    <a type="button" href="{{ route('page-reservation', $bungalow->id) }}"
+                                        class="btn btn-sm btn-secondary">Voir</a>
                                 </div>
                                 @else
                                 <div class="btn-group">
                                     <a type="button" href="{{ route('register') }}"
-                                        class="btn btn-sm btn-success">inscrivez-vous pour réserver</a>
+                                        class="btn btn-sm btn-secondary">inscrivez-vous pour réserver</a>
                                 </div>
                                 @endif
 

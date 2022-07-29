@@ -8,18 +8,24 @@
 
     <title>Le paradis de la plaine</title>
 
-    <!-- Lien BootStrap CSS Version 5.1 -->
-    {{--
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    --}}
-
     <!-- Lien BootStrap CSS Version 5.2 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
     <!-- Lien CDN Font-Awesome -->
     <script src="https://kit.fontawesome.com/26a1275860.js" crossorigin="anonymous"></script>
+
+    <!-- Pour importer un date picker -->
+    <script type="module" src="https://unpkg.com/caly@0.7.2/dist/caly/caly.esm.js"></script>
+    <!-- Pour le style du date picker -->
+    <style>
+        caly-calendar {
+            --grid: "misc"
+                "nav"
+                "mn";
+        }
+    </style>
+
 </head>
 
 <body class="font-sans antialiased">

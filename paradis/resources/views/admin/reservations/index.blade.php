@@ -9,27 +9,51 @@
 
         <div class="activity-data">
             <div class="data names">
-                <span class="data-title">Nom</span>
+                <span class="data-title">Nom du bungalow</span>
 
                 @foreach ($reservations as $reservation)
-                <span style="padding-top: 10px" class="data-list">{{ $reservation->bungalows->nom }}</span>
+                <span style="padding-top: 10px" class="data-list">{{ $reservation->bungalows->nom ?? null}}</span>
                 @endforeach
                 
                 
             </div>
             <div class="data email">
+                <span class="data-title">Description du bungalow</span>
+                @foreach ($reservations as $reservation)
+                <span style="padding-top: 10px" class="data-list">{{ $reservation->bungalows->description}}</span>
+                @endforeach
+            </div>
+            <div class="data joined">
+                <span class="data-title">Nom</span>
+                @foreach ($reservations as $reservation)
+                <span style="padding-top: 10px" class="data-list">{{ $reservation->users->nom  ?? null}}</span>
+                @endforeach
+            </div>
+            <div class="data joined">
                 <span class="data-title">Prenom</span>
                 @foreach ($reservations as $reservation)
-                <span style="padding-top: 10px" class="data-list">{{ $reservation->bungalows->description }}</span>
+                <span style="padding-top: 10px" class="data-list">{{ $reservation->users->prenom  ?? null}}</span>
                 @endforeach
             </div>
             <div class="data joined">
                 <span class="data-title">Email</span>
                 @foreach ($reservations as $reservation)
-                <span style="padding-top: 10px" class="data-list">{{ $reservation->users->nom }}</span>
+                <span style="padding-top: 10px" class="data-list">{{ $reservation->users->email  ?? null}}</span>
                 @endforeach
             </div>
-            <div class="data type">
+            <div class="data joined">
+                <span class="data-title">Fin de réservation</span>
+                @foreach ($reservations as $reservation)
+                <span style="padding-top: 10px" class="data-list">{{ $reservation->debut  ?? null}}</span>
+                @endforeach
+            </div>
+            <div class="data joined">
+                <span class="data-title">Début de réservation</span>
+                @foreach ($reservations as $reservation)
+                <span style="padding-top: 10px" class="data-list">{{ $reservation->fin  ?? null}}</span>
+                @endforeach
+            </div>
+            {{-- <div class="data type">
                 <span class="data-title">Date de début</span>
                 @foreach ($reservations as $reservation)
                 <span style="padding-top: 10px" class="data-list">{{ $reservation->debut }}</span>
@@ -40,7 +64,7 @@
                 @foreach ($reservations as $reservation)
                 <span style="padding-top: 10px" class="data-list">{{ $reservation->fin }}</span>
                 @endforeach
-            </div>
+            </div> --}}
             <div class="data status">
                 <span style="padding-top: 10px" class="data-title">status</span>
                 @foreach ($reservations as $reservation)

@@ -24,13 +24,12 @@ Route::get('/', function () {
 })->name('/');
 
 Route::get('/catalogue', [BungalowController::class, 'catalogue'])->name('catalogue');
-// Route::get('/catalogue', function () {
-//     $bungalows = Bungalow::all();
-//     return view('paradis.catalogue', compact('bungalows'));
-// })->name('catalogue');
+
 
 Route::get('/bungalows', [BungalowController::class])->middleware(['auth'])->name('bungalows');
-Route::get('/bungalows/{id}', [BungalowController::class, 'show'])->middleware(['auth'])->name('bungalows');
+Route::get('/bungalows/page-reservation/{id}', [ReservationController::class, 'showpagereservation'])->middleware(['auth'])->name('page-reservation');
+Route::post('/bungalows/page-reservation', [ReservationController::class, 'store'])->middleware(['auth'])->name('page-reservation-bungalow');
+// Route::post('/page-reservation', [ReservationController::class, 'store'])->name('page-reservation');
 
 Route::get('/accueil', function () {
     return view('paradis.accueil');

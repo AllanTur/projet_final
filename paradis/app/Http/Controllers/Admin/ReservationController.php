@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Bungalow;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ReservationStoreRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -23,6 +27,16 @@ class ReservationController extends Controller
         return view('admin.reservations.index', compact('reservations'));
     }
 
+    public function showpagereservation($id)
+    {
+
+        $reserves = Bungalow::find($id);
+        $reservations = User::all();
+        // $users = auth()->id();
+        $users = Auth::user();
+        return view('paradis.bungalow', compact('reserves', 'users', 'reservations'));
+    }
+
    
 
     /**
@@ -32,7 +46,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        return view('paradis.reservations');
+        //
     }
 
     /**
@@ -41,9 +55,16 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReservationStoreRequest $request)
     {
-        //
+        Reservation::create([
+            'user_id' => $request->user_id,
+            'bungalow_id' => $request->bungalow_id,
+            'debut' => $request->debut,
+            'fin' => $request->fin,
+        ]);
+
+        return to_route('catalogue');
     }
 
     /**
