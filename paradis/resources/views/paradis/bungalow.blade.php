@@ -12,12 +12,12 @@
 
 <a type="button" href="{{ route('bungalows') }}" class="btn btn-sm btn-success">Réserver</a> --}}
 
-<main role="main">
-    <div class="album py-5 ms-5"><a type="button" href="{{ route('catalogue') }}" class="btn btn-sm btn-dark">Retour</a>
-        <div class="container">
+    <div class="container">
+        <div class="album py-5 ms-5"><a type="button" href="{{ route('catalogue') }}" class="btn btn-sm btn-dark">Retour</a>
+        <main role="main">
 
             <div class="row">
-                <div class="col-md-4 position-absolute top-50 start-50 translate-middle">
+                <div class="col-md-4 ">
                     <div class="card mb-5">
                         <img src="{{ Storage::url($reserves->image) }}" class="card-img-top" alt="Photo du bungalow">
                         <div class="card-body">
@@ -34,8 +34,8 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
+</div>
 </main>
 
 
@@ -60,11 +60,13 @@
                     <input type="hidden" id="bungalow_id" name="bungalow_id" value="{{ $reserves->id }}" required>
                     <p>{{ $reserves->nom }}</p>
 
-                    
+
                     <label for="debut">debut :</label>
-                    <input type="date" id="debut" name="debut" value="{{ $reserves->debut }}" required>
+                    <input type="date" id="debut" name="debut" min="{{$min_date->format('Y-m-d')}}"
+                        value="{{ $reserves->debut }}" required>
                     <label for="fin">fin :</label>
-                    <input type="date" id="fin" name="fin" value="{{ $reserves->fin }}" required>
+                    <input type="date" id="fin" name="fin" min="{{$min_date->format('Y-m-d')}}"
+                        value="{{ $reserves->fin }}" required>
 
                     <!-- ######################################### datepicker ################################################ -->
 
@@ -108,5 +110,6 @@
         </form>
     </div>
 </div>
+
 
 @endsection

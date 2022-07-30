@@ -20,9 +20,9 @@
     --icon-color: #2B55CD;
     --panel-color: #FFF;
     --text-color: rgb(0, 0, 0);
-    --black-light-color: #2B55CD;/*#81CC16;*/
+    --black-light-color: #1755CF;/*#81CC16;*/
     --border-color: #E6E5E5;
-    --toggle-color: #81CC16;
+    --toggle-color: #75cfa8;
     --box1-color: #4DA3FF;
     --box2-color: #FFE6AC;
     --box3-color: #E7D1FC;
@@ -48,9 +48,9 @@ body.dark{
     --icon-color: #2B55CD;
     --panel-color: #242526;
     --text-color: rgb(255, 255, 255);
-    --black-light-color: #81CC16;
+    --black-light-color: #1FACC2;
     --border-color: #4D4C4C;
-    --toggle-color: #2B55CD;
+    --toggle-color: #1FACC2;
     --box1-color: #3A3B3C;
     --box2-color: #3A3B3C;
     --box3-color: #3A3B3C;
