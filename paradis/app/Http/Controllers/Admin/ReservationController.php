@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationStoreRequest;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
@@ -34,7 +35,8 @@ class ReservationController extends Controller
         $reservations = User::all();
         // $users = auth()->id();
         $users = Auth::user();
-        return view('paradis.bungalow', compact('reserves', 'users', 'reservations'));
+        $min_date = Carbon::today();
+        return view('paradis.bungalow', compact('reserves', 'users', 'reservations', 'min_date'));
     }
 
    

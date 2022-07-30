@@ -31,7 +31,7 @@
 <body class="font-sans antialiased">
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
         <div class="container-fluid">
             @if(auth()->check() && auth()->user()->is_admin == 1)
             <a class="navbar-brand" href="{{ route('accueil') }}">LOGO</a>
