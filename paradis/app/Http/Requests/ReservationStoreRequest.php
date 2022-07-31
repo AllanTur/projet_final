@@ -27,8 +27,8 @@ class ReservationStoreRequest extends FormRequest
             'user_id' => 'required',
             // |unique:reservations
             'bungalow_id' => 'required',
-            // 'debut' => 'required',
-            // 'fin' => 'required',
+            'debut' => 'required',
+            'fin' => 'required',
             // |unique:reservations
         ];
     }

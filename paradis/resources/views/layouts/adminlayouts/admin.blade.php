@@ -21,7 +21,7 @@
     <script src="https://kit.fontawesome.com/26a1275860.js" crossorigin="anonymous"></script>
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
     <!-- CSS  -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dashmain.css') }}">

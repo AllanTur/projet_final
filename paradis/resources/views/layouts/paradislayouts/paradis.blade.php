@@ -15,16 +15,6 @@
     <!-- Lien CDN Font-Awesome -->
     <script src="https://kit.fontawesome.com/26a1275860.js" crossorigin="anonymous"></script>
 
-    <!-- Pour importer un date picker -->
-    <script type="module" src="https://unpkg.com/caly@0.7.2/dist/caly/caly.esm.js"></script>
-    <!-- Pour le style du date picker -->
-    <style>
-        caly-calendar {
-            --grid: "misc"
-                "nav"
-                "mn";
-        }
-    </style>
 
 </head>
 
@@ -126,6 +116,17 @@
         @endauth
     </div>
     @endif --}}
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 fixed-bottom bg-dark">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <svg class="bi" width="30" height="24">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+            <span class="text-muted">© 2022 Company, Inc</span>
+        </div>
+
+    </footer>
 
     <!-- Lien BootStrap JavaScript Version 5.2 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

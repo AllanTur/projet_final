@@ -55,16 +55,3 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
-
-{{-- @extends('layouts.guest')
-
-@section('guest')
-<form method="POST" action="{{ route('login') }}">
-    @csrf
-    <label for="email" value="__('Email')">E-mail :</label><br>
-    <input id="email" type="email" name="email" :value="old('email')" required autofocus><br>
-    <label for="password" value="__('Password')">Password :</label><br>
-    <input id="password" name="lname" type="password" name="password" required autocomplete="current-password"><br><br>
-    <button type="submit">Click Me!</button>
-</form>
-@endsection --}}

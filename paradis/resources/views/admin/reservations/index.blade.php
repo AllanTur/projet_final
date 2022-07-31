@@ -17,12 +17,12 @@
                 
                 
             </div>
-            <div class="data email">
+            {{-- <div class="data email">
                 <span class="data-title">Description du bungalow</span>
                 @foreach ($reservations as $reservation)
                 <span style="padding-top: 10px" class="data-list">{{ $reservation->bungalows->description}}</span>
                 @endforeach
-            </div>
+            </div> --}}
             <div class="data joined">
                 <span class="data-title">Nom</span>
                 @foreach ($reservations as $reservation)
